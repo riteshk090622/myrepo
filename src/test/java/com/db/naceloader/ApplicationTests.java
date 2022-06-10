@@ -24,6 +24,8 @@ class ApplicationTests {
 		final ResponseEntity<Nace> responseEntity = restTemplate.getForEntity("/nace/398481", Nace.class);
 		assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
 		assertThat(responseEntity.getBody().getOrderId()).isEqualTo(398481);
+		assertThat(responseEntity.getBody().getLevel()).isEqualTo(1);
+		assertThat(responseEntity.getBody().getCode()).isEqualTo("A");
 	}
 
 }
