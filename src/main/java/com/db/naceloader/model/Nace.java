@@ -1,9 +1,19 @@
 package com.db.naceloader.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Nace {
+
+    @Id
     private Integer orderId;
     private Integer level;
     private String code;
+
+    public Nace(){
+
+    }
 
     public Nace(Integer orderId, Integer level, String code) {
         this.orderId = orderId;
