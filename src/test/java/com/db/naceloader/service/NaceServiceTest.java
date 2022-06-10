@@ -1,6 +1,7 @@
 package com.db.naceloader.service;
 
 import com.db.naceloader.model.Nace;
+import com.db.naceloader.model.NaceBuilder;
 import com.db.naceloader.repository.NaceRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -37,7 +38,7 @@ class NaceServiceTest {
 
     @Test
     void getNaceDetails() {
-        given(naceRepository.findByOrderId(anyInt())).willReturn(new Nace(398481,1,"A"));
+        given(naceRepository.findByOrderId(anyInt())).willReturn(new NaceBuilder().setOrderId(398481).setLevel(1).setCode("A").createNace());
         final Nace nace = naceService.getNaceDetails(398481);
         assertEquals(398481, nace.getOrderId());
         assertEquals(1, nace.getLevel());

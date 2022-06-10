@@ -4,6 +4,7 @@ import com.db.naceloader.model.Nace;
 import com.db.naceloader.model.ResponseUserMessage;
 import com.db.naceloader.service.NaceService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -18,7 +19,7 @@ public class NaceController {
         return naceService.getNaceDetails(orderId);
     }
 
-    @PostMapping("/uploadCsv")
+    @PostMapping(value = "/uploadCsv", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseUserMessage putNaceDetails(@RequestPart("file") MultipartFile file){
         return new ResponseUserMessage(naceService.putNaceDetails(file));
     }

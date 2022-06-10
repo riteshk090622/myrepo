@@ -15,13 +15,10 @@ repositories {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	// https://mvnrepository.com/artifact/com.h2database/h2
-	implementation 'com.h2database:h2'
-// https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-ui
 	implementation group: 'org.springdoc', name: 'springdoc-openapi-ui', version: '1.6.9'
-// https://mvnrepository.com/artifact/org.apache.commons/commons-csv
 	implementation group: 'org.apache.commons', name: 'commons-csv', version: '1.9.0'
 
+	implementation 'com.h2database:h2'
 
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }

@@ -1,6 +1,7 @@
 package com.db.naceloader.controller;
 
 import com.db.naceloader.model.Nace;
+import com.db.naceloader.model.NaceBuilder;
 import com.db.naceloader.service.NaceService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +32,7 @@ public class NaceControllerTest {
 
     @Test
     void getNaceDetails() throws Exception {
-        given(naceService.getNaceDetails(anyInt())).willReturn(new Nace(398481, 1, "A"));
+        given(naceService.getNaceDetails(anyInt())).willReturn(new NaceBuilder().setOrderId(398481).setLevel(1).setCode("A").createNace());
         mockMvc.perform(MockMvcRequestBuilders.get("/nace/398481"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("orderId").value(398481))

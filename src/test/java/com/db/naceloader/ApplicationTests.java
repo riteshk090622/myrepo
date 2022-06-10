@@ -2,30 +2,16 @@ package com.db.naceloader;
 
 import com.db.naceloader.model.Nace;
 import com.db.naceloader.model.ResponseUserMessage;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
-import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.http.*;
-import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
-
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class ApplicationTests {
@@ -40,6 +26,13 @@ class ApplicationTests {
 		assertThat(responseEntity.getBody().getOrderId()).isEqualTo(398481);
 		assertThat(responseEntity.getBody().getLevel()).isEqualTo(1);
 		assertThat(responseEntity.getBody().getCode()).isEqualTo("A");
+		assertThat(responseEntity.getBody().getParent()).isNullOrEmpty();
+		assertThat(responseEntity.getBody().getDescription()).isEqualTo("AGRICULTURE, FORESTRY AND FISHING");
+		assertThat(responseEntity.getBody().getIncludes()).isEqualTo("This section includes the exploitation of vegetal and animal natural resources, comprising the activities of growing of crops, raising and breeding of animals, harvesting of timber and other plants, animals or animal products from a farm or their natural habitats.");
+		assertThat(responseEntity.getBody().getAlsoIncludes()).isNullOrEmpty();
+		assertThat(responseEntity.getBody().getRulings()).isNullOrEmpty();
+		assertThat(responseEntity.getBody().getExcludes()).isNullOrEmpty();
+		assertThat(responseEntity.getBody().getReference()).isEqualTo("A");
 	}
 
 	@Test
