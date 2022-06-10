@@ -25,4 +25,5 @@ class NaceRepositoryTest {
         assertEquals(flushFind.getLevel(), foundInRepo.getLevel());
         assertEquals(flushFind.getCode(), foundInRepo.getCode());
     }
+
 }
